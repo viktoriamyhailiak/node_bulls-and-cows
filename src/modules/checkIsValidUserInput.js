@@ -1,7 +1,8 @@
 'use strict';
 
 function checkIsValidUserInput(userInput) {
-  const digitsSet = new Set(userInput);
+  const inputStr = String(userInput).trim();
+  const digitsSet = new Set(inputStr);
 
   if (
     userInput.length !== 4 ||

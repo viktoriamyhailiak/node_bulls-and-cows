@@ -19,9 +19,9 @@ async function playGame() {
   console.log('Guess the 4-digit number with all unique digits.');
 
   while (true) {
-    const answer = await askQuestion('Enter your guess: ');
+    const answer = String(await askQuestion('Enter your guess: ')).trim();
 
-    if (!checkIsValidUserInput(answer)) {
+    if (!checkIsValidUserInput(answer.trim())) {
       // eslint-disable-next-line no-console
       console.log(
         'Invalid input! Enter 4 different digits, first digit not 0.',
@@ -29,7 +29,7 @@ async function playGame() {
       continue;
     }
 
-    const { bulls, cows } = getBullsAndCows(answer, generated);
+    const { bulls, cows } = getBullsAndCows(answer.trim(), generated);
 
     if (bulls === 4) {
       // eslint-disable-next-line no-console
