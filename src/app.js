@@ -5,7 +5,6 @@ const { stdin: input, stdout: output } = require('node:process');
 const { checkIsValidUserInput } = require('./modules/checkIsValidUserInput');
 const { generateRandomNumber } = require('./modules/generateRandomNumber');
 const { getBullsAndCows } = require('./modules/getBullsAndCows');
-const generated = generateRandomNumber();
 
 const rl = readline.createInterface({ input, output });
 
@@ -14,6 +13,8 @@ function askQuestion(query) {
 }
 
 async function playGame() {
+  const generated = generateRandomNumber();
+
   // eslint-disable-next-line no-console
   console.log('Guess the 4-digit number with all unique digits.');
 
@@ -43,4 +44,8 @@ async function playGame() {
   rl.close();
 }
 
-playGame();
+if (require.main === module) {
+  playGame();
+}
+
+module.exports = { playGame };
